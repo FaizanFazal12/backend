@@ -1,4 +1,5 @@
 const express = require("express");
+require('dotenv').config();
 const { ConnectToMongodb } = require("./connect");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
@@ -9,16 +10,18 @@ const cors = require("cors");
 
 const app = express();
 const port = 8000;
+const CONNECT_TO_MONOGODB = process.env.CONNECT_TO_MONOGODB;
+const ORIGIN = process.env.ORIGIN;
 
 //connect to mongodb
 ConnectToMongodb(
-  "mongodb+srv://fazfaizan22:faizan415263@faizan.imlzvdr.mongodb.net/mern_stocks?retryWrites=true&w=majority",
+  CONNECT_TO_MONOGODB,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   }
 ).then(() => console.log("Connected to the databse"));
-app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+app.use(cors({ origin: ORIGIN, credentials: true }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
