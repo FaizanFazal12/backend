@@ -42,7 +42,6 @@ router.get('/stocks/:id', async (req, res) => {
 
 // Update a stock by ID
 router.put('/stocks/:id', async (req, res) => {
-  console.log(req.params.id)
   try {
     const updatedStock = await Stock.findByIdAndUpdate(req.params.id, req.body, { new: true });
     if (!updatedStock) {

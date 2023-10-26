@@ -9,7 +9,6 @@ router.post("/signup", async (req, res) => {
   try {
     const { username, password, email } = req.body;
 
-    console.log( username, password, email )
     // Check if the email is already taken
     const existingUser = await User.findOne({ email });
 
@@ -37,7 +36,6 @@ router.post("/signup", async (req, res) => {
 router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
-console.log(email, password)
     // Find the user by username
     const user = await User.findOne({ email });
 
