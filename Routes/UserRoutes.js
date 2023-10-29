@@ -54,7 +54,7 @@ router.post("/login", async (req, res) => {
     const token = SetUser(user);
 
     res.cookie("token", token, { httpOnly: true });
-    return res.json({user ,token, success:true});
+    return res.json({user , success:true});
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Internal Server Error" });
@@ -78,7 +78,7 @@ router.get("/auto-login", async (req, res) => {
       return res.status(401).json({ message: "Invalid token" });
     }
 
-    return res.json({ user, token, success: true });
+    return res.json({ user, success: true });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Internal Server Error" });
